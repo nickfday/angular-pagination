@@ -4,6 +4,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
     <script src="example.js"></script>
+      <script src="filter.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
@@ -12,6 +13,11 @@
 
   <div ng-controller="PaginationDemoCtrl">
       <h4>Default</h4>
+
+      <div ng-repeat="car in cars | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
+        {{car}}
+      </div>
+
       <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
       <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
       <pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></pagination>
